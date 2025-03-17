@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====== Basics =============================================================== -->
+
+    <groupId>com.kondra.kos.test-4000</groupId>
+    <artifactId>test-4000</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <!-- ====== Properties =========================================================== -->
+
+    <properties>
+        <!-- kOS libraries (last updated 2023-09-22 by RS) -->
+        <kos.version>0.0.0-SNAPSHOT</kos.version>
+        <ddk.version>0.0.0-SNAPSHOT</ddk.version>
+        <kos-kab-maven-plugin.version>1.3.1</kos-kab-maven-plugin.version>
+
+        <!-- Core Properties (last updated 2023-09-06 by RS) -->
+        <company.name>Kondra</company.name>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- Maven Plugin Versions (last updated 2023-05-17 by RS) -->
+        <!-- https://maven.apache.org/plugins/index.html -->
+        <!-- https://maven.apache.org/plugins/maven-assembly-plugin/ -->
+        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-clean-plugin/ -->
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-dependency-plugin/ -->
+        <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-jar-plugin/ -->
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
+        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-resources-plugin/ -->
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-shade-plugin/ -->
+        <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+        <!-- https://maven.apache.org/plugins/maven-site-plugin/ -->
+        <maven-site-plugin.version>4.0.0-M8</maven-site-plugin.version>
+        <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <!-- https://www.mojohaus.org/exec-maven-plugin/ -->
+        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+
+        <!-- Third-party library dependency versions (last updated 2023-08-14 by RS) -->
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+        <hamcrest.version>2.2</hamcrest.version>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <lombok.version>1.18.36</lombok.version>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <jackson.version>2.15.2</jackson.version>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
+    </properties>
+
+    <!-- ====== Modules ============================================================== -->
+
+    <modules>
+        <module>core</module>
+    </modules>
+
+    <!-- ====== Dependency Management ================================================ -->
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- kOS SDK -->
+            <dependency>
+                <groupId>com.kosdev.kos.sdk.bom</groupId>
+                <artifactId>kos-bom</artifactId>
+                <version>${kos.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- ddk -->
+            <dependency>
+                <groupId>com.kosdev.kos.app.ddk</groupId>
+                <artifactId>ddk.sdk</artifactId>
+                <version>${ddk.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Hamcrest testing framework -->
+            <!-- http://hamcrest.org/JavaHamcrest/ -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Lombok annotations -->
+            <!-- https://www.projectlombok.org/ -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- JUnit testing platform -->
+            <!-- https://junit.org/junit5/ -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ====== Plugin Management ==================================================== -->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Antrun -->
+                <!-- https://maven.apache.org/plugins/maven-antrun-plugin/ -->
+                <!-- https://ant.apache.org/manual/Tasks/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}</version>
+                </plugin>
+
+                <!-- Assembly -->
+                <!-- https://maven.apache.org/plugins/maven-assembly-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+
+                <!-- Clean -->
+                <!-- https://maven.apache.org/plugins/maven-clean-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+
+                <!-- Compiler -->
+                <!-- https://maven.apache.org/plugins/maven-compiler-plugin/index.html -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
+                <!-- Dependency -->
+                <!-- https://maven.apache.org/plugins/maven-dependency-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+
+                <!-- Deploy -->
+                <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+
+                <!-- Enforcer -->
+                <!-- https://maven.apache.org/enforcer/maven-enforcer-plugin/ -->
+                <!-- $ mvn enforcer:display-info -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-versions</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>3.6</version>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>17</version>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Exec -->
+                <!-- https://www.mojohaus.org/exec-maven-plugin/ -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${exec-maven-plugin.version}</version>
+                </plugin>
+
+                <!-- Jar -->
+                <!-- https://maven.apache.org/plugins/maven-jar-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <Company-Name>${company.name}</Company-Name>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <!-- Javadoc -->
+                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+
+                <!-- Plugin -->
+                <!-- https://maven.apache.org/plugin-tools/maven-plugin-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>${maven-plugin-plugin.version}</version>
+                </plugin>
+
+                <!-- Release -->
+                <!-- https://maven.apache.org/maven-release/maven-release-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                </plugin>
+
+                <!-- Resources -->
+                <!-- https://maven.apache.org/plugins/maven-resources-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+
+                <!-- Shade -->
+                <!-- https://maven.apache.org/plugins/maven-shade-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+
+                <!-- Site -->
+                <!-- https://maven.apache.org/plugins/maven-site-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+
+                <!-- Sources -->
+                <!-- https://maven.apache.org/plugins/maven-source-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+
+                <!-- SureFire -->
+                <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>UT_*.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+                <!-- kOS Maven Plugin -->
+                <plugin>
+                    <groupId>com.kosdev.kos.maven</groupId>
+                    <artifactId>kos-kab-maven-plugin</artifactId>
+                    <version>${kos-kab-maven-plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- ====== Code Repositories ==================================================== -->
+
+    <repositories>
+        <repository>
+            <id>kosdevcode</id>
+            <name>kOS Code Repository</name>
+            <url>https://maven.pkg.github.com/kosdev-code/kos-maven</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!-- ====== Plugin Repositories ================================================== -->
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>kosdevcode</id>
+            <name>kOS Plugin Repository</name>
+            <url>https://maven.pkg.github.com/kosdev-code/kos-maven</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

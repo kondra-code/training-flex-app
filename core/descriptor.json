@@ -1,0 +1,170 @@
+{
+  "kos": {
+    "app": {
+      "appClass": "com.kondra.kos.fs4000.Fs4000App",
+      "appId": "system",
+      "altClassesDir": "/home/david/src/test-4000/core/target/classes"
+    }
+  },
+  "kondra": {
+    "ncui": {
+      "setup": {
+        "steps": [
+          {
+            "name": "selectCountry",
+            "preStep": true
+          },
+          {
+            "name": "selectLanguage",
+            "preStep": true
+          },
+          {
+            "name": "plainWater"
+          },
+          {
+            "name": "carbWater"
+          },
+          {
+            "name": "ns"
+          },
+          {
+            "name": "macroAssignment"
+          },
+          {
+            "name": "ingredients"
+          },
+          {
+            "name": "regions"
+          },
+          {
+            "name": "timeSettings"
+          },
+          {
+            "name": "dispenserProfile"
+          },
+          {
+            "name": "waterSettings"
+          },
+          {
+            "name": "iceSettings"
+          }
+        ]
+      },
+      "utilities": [
+        [
+          {
+            "name": "touchScreenTest",
+            "options": {}
+          },
+          {
+            "name": "pixelQualityTest",
+            "options": {}
+          },
+          {
+            "name": "setup",
+            "options": {}
+          },
+          {
+            "name": "usbUpdate",
+            "options": {},
+            "roles": ["manager", "technician"]
+          }
+        ],
+        [
+          {
+            "name": "reboot",
+            "options": {},
+            "roles": ["manager"]
+          },
+          {
+            "name": "sanitization",
+            "options": {},
+            "roles": ["manager"]
+          },
+          {
+            "name": "downloadLogs",
+            "options": {},
+            "roles": ["manager", "technician"]
+          },
+          {
+            "name": "beveragePourTest",
+            "options": {},
+            "roles": ["manager", "technician"]
+          }
+        ]
+      ],
+      "navigations": [
+        {
+          "name": "summary",
+          "roles": ["crew", "technician"]
+        },
+        {
+          "name": "dashboard",
+          "roles": ["crew", "technician"]
+        },
+        {
+          "name": "notifications",
+          "roles": ["crew", "technician"]
+        },
+        {
+          "name": "about",
+          "options": {
+            "embed": true
+          },
+          "roles": ["crew", "technician"],
+          "children": [
+            {
+              "name": "dispenser-info",
+              "roles": ["technician", "crew"]
+            },
+            {
+              "name": "hardware",
+              "roles": ["technician", "crew"]
+            },
+            {
+              "name": "connectivity",
+              "roles": ["technician", "crew"]
+            },
+            {
+              "name": "software",
+              "roles": ["technician", "crew"]
+            }
+          ]
+        },
+        {
+          "name": "utilities",
+          "roles": ["technician", "manager"]
+        },
+        {
+          "name": "settings",
+          "roles": ["technician"],
+          "options": {
+            "embed": true
+          },
+          "children": [
+            {
+              "name": "regions",
+              "roles": ["technician"]
+            },
+            {
+              "name": "dispenser-profile",
+              "roles": ["technician"]
+            },
+            {
+              "name": "cui-selection",
+              "roles": ["technician"]
+            },
+            {
+              "name": "water",
+              "roles": ["technician"]
+            },
+            {
+              "name": "ice",
+              "roles": ["technician"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

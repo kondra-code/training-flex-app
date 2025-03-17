@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device>
+   <configSource>
+      <configs>
+         <!-- lfcv config for various macros -->
+         <config name="pump.type.lfcv">
+            <property name="lowValveRate" value="0"/>
+            <property name="highValveRate" value="11.25"/>
+            <property name="lowTransientRate" value="0"/>
+            <property name="highTransientRate" value="0"/>
+            <property name="lowTransientDuration" value="0"/>
+            <property name="highTransientDuration" value="0"/>
+            <property name="highTransientVol" value="1.0"/>
+            <property name="nominalRate" value="11.25"/>
+            <property name="timeMaxLastPourSec" value="3400"/>
+            <property name="aCasualOffset" value="0"/>
+            <property name="bCasualOffset" value="0"/>
+            <property name="dCasualOffset" value="0"/>
+         </config>
+
+         <!-- flow rate ranges for waters -->
+         <config name="pump.waters.flowRateRanges">
+            <property name="flowRateRanges.base.min" value="55.0"/>
+            <property name="flowRateRanges.base.max" value="95.0"/>
+         </config>
+
+         <!-- nominal rate for micros -->
+         <config name="pump.type.micro">
+            <property name="nominalRate" value="0.8"/>
+         </config>
+
+         <!-- cartridge agitator -->
+         <config name="agitator">
+            <property name="systemStart.rpm" value="325"/>
+            <property name="systemStart.durationSec" value="300"/>
+            <property name="periodic.rpm" value="325"/>
+            <property name="periodic.durationSec" value="10"/>
+            <property name="periodicDelaySec" value="110"/>
+            <property name="completionThresholdPercent" value="0.9"/>
+            <property name="resumeDelayMS" value="1000"/>
+         </config>
+   
+      </configs>
+      
+      <beanGroups>
+
+         <!-- configure macro pumps -->
+         <beanGroup basePath="assembly:core:board:macro:pump">
+            <!-- apply to all pumps below -->
+            <config ref="pump.type.lfcv"/>
+            
+            <bean path="macro1"/>
+            <bean path="macro2"/>
+            <bean path="macro3"/>
+            <bean path="macro4"/>
+         </beanGroup>
+
+         <!-- configure waters -->
+         <beanGroup basePath="assembly:core:board:macro:pump">
+            <!-- apply to all pumps below -->
+            <config ref="pump.waters.flowRateRanges"/>
+            
+            <bean path="water"/>
+            <bean path="carb"/>
+         </beanGroup>
+
+         <!-- configure micro pumps -->
+         <beanGroup basePath="assembly:core:board:micro:pump">
+            <!-- apply to all pumps below -->
+            <config ref="pump.type.micro"/>
+
+            <bean path="A1"/>
+            <bean path="A2"/>
+            <bean path="A3"/>
+            <bean path="A4"/>
+            <bean path="A5"/>
+            <bean path="A6"/>
+            <bean path="A7"/>
+            <bean path="A8"/>
+            <bean path="S1"/>
+            <bean path="S2"/>
+            <bean path="S3"/>
+            <bean path="S4"/>
+            <bean path="S5"/>
+            <bean path="S6"/>
+            <bean path="S7"/>
+            <bean path="S8a"/>
+            <bean path="S8b"/>
+            <bean path="S8c"/>
+         </beanGroup>
+
+         <!-- additional configs -->
+         <beanGroup>
+            <!-- cartridge agitator -->
+            <bean path="assembly:core:board:macro:agitator:agit">
+               <config ref="agitator"/>
+            </bean>
+         </beanGroup>
+
+      </beanGroups>
+   </configSource>
+</device>

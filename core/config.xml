@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device>
+   <configSource include="configs/freestyle.xml"/>
+   <configSource>
+      <beanGroups>
+         <beanGroup>
+         
+            <!-- RFID settings -->
+            <bean path="assembly:core:board:rfid:antenna:static">
+               <property name="readPower" value="POWER_20dBm"/>
+               <property name="writePower" value="POWER_25dBm"/>
+            </bean>
+            <bean path="assembly:core:board:rfid:antenna:agit">
+               <property name="readPower" value="POWER_20dBm"/>
+               <property name="writePower" value="POWER_25dBm"/>
+            </bean>
+
+            <!-- only four critical data sources total -->
+            <bean path="kos:service:criticalData">
+               <property name="forceDecisionSourceCount" value="4"/>
+            </bean>
+
+            <!-- max pour volume -->
+            <bean path="app:kosdev.ddk:app">
+               <property name="maxPourVolume" value="1000"/>
+            </bean>
+            
+         </beanGroup>
+      </beanGroups>
+   </configSource>
+</device>
