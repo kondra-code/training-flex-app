@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<regionDefs>
+    <regions>
+        <region id="factory">
+            <unitSystemId>si</unitSystemId>
+            <timeFormatId>t_HHmm</timeFormatId>
+            <dateFormatId>d_ddMMyy</dateFormatId>
+        </region>
+        <region id="us">
+            <country>US</country>
+            <unitSystemId>us</unitSystemId>
+            <timeFormatId>t_hhmma</timeFormatId>
+            <dateFormatId>d_MMddyy</dateFormatId>
+            <rfidRegion>US</rfidRegion>
+            <regulationZone>US</regulationZone>
+            <timeZones>
+                <timeZone>America/Anchorage</timeZone>
+                <timeZone>America/Boise</timeZone>
+                <timeZone>America/Chicago</timeZone>
+                <timeZone>America/Denver</timeZone>
+                <timeZone>America/Detroit</timeZone>
+                <timeZone>America/Fort_Wayne</timeZone>
+                <timeZone>America/Indianapolis</timeZone>
+                <timeZone>America/Los_Angeles</timeZone>
+                <timeZone>America/Louisville</timeZone>
+                <timeZone>America/New_York</timeZone>
+                <timeZone>America/Puerto_Rico</timeZone>
+                <timeZone>Pacific/Samoa</timeZone>
+            </timeZones>
+        </region>
+        <region id="it">
+            <country>IT</country>
+            <unitSystemId>si</unitSystemId>
+            <timeFormatId>t_HHmm</timeFormatId>
+            <dateFormatId>d_ddMMyy</dateFormatId>
+            <rfidRegion>IT</rfidRegion>
+            <regulationZone>EU</regulationZone>
+            <timeZones>
+                <timeZone>Europe/Rome</timeZone>
+            </timeZones>
+        </region>
+    </regions>
+</regionDefs>
