@@ -86,10 +86,6 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
         // create a nozzle and add it to this assembly
         addNozzle(nozzle = new Nozzle(this, "nozzle"));
 
-        // load intents used by the pump pipeline
-        intentFactory = new XmlFreestylePumpIntentFactory();
-        intentFactory.addLoader(new ClassLoaderResourceLoader(getClass().getClassLoader()));
-        intentFactory.load("intents.xml");
 
         List<SuperPumpDefinition> superPumps = new ArrayList<>();
         superPumps.add(new SuperPumpDefinition(18, new int[] {15,16,17}));
@@ -146,6 +142,11 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
         holderBuilder.buildMacro(macroBoard.getMacro2()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro3()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro4()).setIngType(Ingredient.TYPE_BIB);
+
+        // load intents used by the pump pipeline
+        intentFactory = new XmlFreestylePumpIntentFactory();
+        intentFactory.addLoader(new ClassLoaderResourceLoader(getClass().getClassLoader()));
+        intentFactory.load("intents.xml");
 
         // add a ingredient pipeline and use water for dilution:
         IngredientNozzlePipeline ingredientPipeline = new IngredientNozzlePipeline(intentFactory);
