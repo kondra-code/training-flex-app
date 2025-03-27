@@ -1,7 +1,7 @@
 /**
  * (C) Copyright 2024, Kondra, All rights reserved.
  */
-package com.kondra.kos.fs4000;
+package com.kondra.kos.training.flex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +49,12 @@ import lombok.extern.slf4j.Slf4j;
  * @version 2024-07-30
  */
 @Slf4j
-public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
+public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
     // reason codes
     private static final String REASON_door = "door";
 
     @Autowired
-    private Fs4000App app;                              // system app
+    private FlexApp app;                              // system app
     @Autowired
     private SpawnService spawnService;                  // used to start adapter
     @Autowired
@@ -77,7 +77,7 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
     private EX10RfidAdapter rfidAdapter;                // rfid adapter for EX10 hardware
     private GPIOState gpioState;                        // gpio state bean
 
-    public Fs4000Assembly(JsonDescriptor descriptor) throws Exception {
+    public FlexAssembly(JsonDescriptor descriptor) throws Exception {
         super("core", descriptor);
     }
 

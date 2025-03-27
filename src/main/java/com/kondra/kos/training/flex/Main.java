@@ -1,4 +1,4 @@
-package com.kondra.kos.fs4000;
+package com.kondra.kos.training.flex;
 
 public class Main {
     public static void main(String[] args) {

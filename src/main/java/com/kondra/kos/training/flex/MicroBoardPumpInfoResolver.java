@@ -1,7 +1,7 @@
 /**
  * (C) Copyright 2024, Kondra, All rights reserved.
  */
-package com.kondra.kos.fs4000;
+package com.kondra.kos.training.flex;
 
 import com.tccc.kos.ext.freestyle.pumpinfo.DefaultPumpInfoResolver;
 import com.tccc.kos.ext.freestyle.pumpinfo.PumpInfo;
