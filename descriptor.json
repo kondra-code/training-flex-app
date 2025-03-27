@@ -2,7 +2,7 @@
   "kos": {
     "app": {
       "appClass": "com.kondra.kos.training.flex.FlexApp",
-      "appId": "system",
+      "appId": "system"
     }
   },
   "kondra": {
