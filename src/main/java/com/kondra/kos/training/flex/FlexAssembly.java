@@ -1,7 +1,7 @@
 /**
  * (C) Copyright 2024, Kondra, All rights reserved.
  */
-package com.kondra.kos.fs4000;
+package com.kondra.kos.training.flex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +49,12 @@ import lombok.extern.slf4j.Slf4j;
  * @version 2024-07-30
  */
 @Slf4j
-public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
+public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
     // reason codes
     private static final String REASON_door = "door";
 
     @Autowired
-    private Fs4000App app;                              // system app
+    private FlexApp app;                              // system app
     @Autowired
     private SpawnService spawnService;                  // used to start adapter
     @Autowired
@@ -77,7 +77,7 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
     private EX10RfidAdapter rfidAdapter;                // rfid adapter for EX10 hardware
     private GPIOState gpioState;                        // gpio state bean
 
-    public Fs4000Assembly(JsonDescriptor descriptor) throws Exception {
+    public FlexAssembly(JsonDescriptor descriptor) throws Exception {
         super("core", descriptor);
     }
 
@@ -86,10 +86,6 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
         // create a nozzle and add it to this assembly
         addNozzle(nozzle = new Nozzle(this, "nozzle"));
 
-        // load intents used by the pump pipeline
-        intentFactory = new XmlFreestylePumpIntentFactory();
-        intentFactory.addLoader(new ClassLoaderResourceLoader(getClass().getClassLoader()));
-        intentFactory.load("intents.xml");
 
         List<SuperPumpDefinition> superPumps = new ArrayList<>();
         superPumps.add(new SuperPumpDefinition(18, new int[] {15,16,17}));
@@ -146,6 +142,11 @@ public class Fs4000Assembly extends StandardFreestyleAssembly implements CoreAss
         holderBuilder.buildMacro(macroBoard.getMacro2()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro3()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro4()).setIngType(Ingredient.TYPE_BIB);
+
+        // load intents used by the pump pipeline
+        intentFactory = new XmlFreestylePumpIntentFactory();
+        intentFactory.addLoader(new ClassLoaderResourceLoader(getClass().getClassLoader()));
+        intentFactory.load("intents.xml");
 
         // add a ingredient pipeline and use water for dilution:
         IngredientNozzlePipeline ingredientPipeline = new IngredientNozzlePipeline(intentFactory);

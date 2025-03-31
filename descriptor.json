@@ -1,9 +1,8 @@
 {
   "kos": {
     "app": {
-      "appClass": "com.kondra.kos.fs4000.Fs4000App",
-      "appId": "system",
-      "altClassesDir": "/home/david/src/test-4000/core/target/classes"
+      "appClass": "com.kondra.kos.training.flex.FlexApp",
+      "appId": "system"
     }
   },
   "kondra": {

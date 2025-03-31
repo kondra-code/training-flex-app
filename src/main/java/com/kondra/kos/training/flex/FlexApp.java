@@ -1,7 +1,7 @@
 /**
  * (C) Copyright 2024, Kondra, All rights reserved.
  */
-package com.kondra.kos.fs4000;
+package com.kondra.kos.training.flex;
 
 import java.util.Arrays;
 
@@ -25,7 +25,7 @@ import lombok.Getter;
  * System application for 4000 dispenser. This is the main entry point from
  * kOS during the boot process..
  */
-public class Fs4000App extends SystemApplication<Fs4000AppConfig> {
+public class FlexApp extends SystemApplication<FlexAppConfig> {
 
     @Autowired
     private FreestyleExtension freestyleExt;
@@ -33,7 +33,7 @@ public class Fs4000App extends SystemApplication<Fs4000AppConfig> {
     private AppService appService;
     @Autowired
     private DeviceService deviceService;
-    private Fs4000Assembly assembly;
+    private FlexAssembly assembly;
     @Getter
     private DDK ddk;
 
@@ -58,7 +58,7 @@ public class Fs4000App extends SystemApplication<Fs4000AppConfig> {
     public void start() throws Exception {
 
         // create and install the assembly for the device
-        installAssembly(assembly = new Fs4000Assembly(getDescriptor()));
+        installAssembly(assembly = new FlexAssembly(getDescriptor()));
     }
 
     @Override

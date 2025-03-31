@@ -145,7 +145,7 @@
                             <goal>kabtool</goal>
                         </goals>
                         <configuration>
-                           <type>zero4.brandset</type>
+                           <type>kos.system</type>
                            <content>
                               <copy>
                                  <includes>
