@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2024, Kondra, All rights reserved.
+ * (C) Copyright 2024, TCCC, All rights reserved.
  */
 package com.kondra.kos.training.flex;
 
@@ -14,15 +14,13 @@ import com.tccc.kos.core.service.app.SystemApplication;
 import com.tccc.kos.core.service.device.DeviceService;
 import com.tccc.kos.core.service.device.serialnum.SerialNumberProvider;
 import com.tccc.kos.core.service.device.serialnum.criticaldata.CriticalDataSerialNumberProvider;
-import com.tccc.kos.ddk.DDK;
-import com.tccc.kos.ddk.service.auth.NcuiRole;
 import com.tccc.kos.ext.freestyle.FreestyleExtension;
 import com.tccc.kos.ext.freestyle.region.FreestyleRegionFactory;
 
 import lombok.Getter;
 
 /**
- * System application for 4000 dispenser. This is the main entry point from
+ * System application for Flex dispenser. This is the main entry point from
  * kOS during the boot process..
  */
 public class FlexApp extends SystemApplication<FlexAppConfig> {
