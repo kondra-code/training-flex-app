@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# this file is meant to be sourced
+SOURCE_SCRIPT=$(realpath "${BASH_SOURCE[0]}")
+SOURCE_SCRIPT_DIR=$(dirname "$SOURCE_SCRIPT")
+TOP_DIR="${SOURCE_SCRIPT_DIR}/.."
+
+# install the SDK
+"${SOURCE_SCRIPT_DIR}/install_kos_sdk.sh"
+
+echo "sourcing the build environment"
+source "${TOP_DIR}/build/sdk/environment-setup-cortexa57-kos-linux"

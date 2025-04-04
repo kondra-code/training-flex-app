@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2024, Kondra, All rights reserved.
+ * (C) Copyright 2025, TCCC, All rights reserved.
  */
 package com.kondra.kos.training.flex;
 
@@ -10,10 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Config bean for Fs7100 app.
- *
- * @author David Vogt (david@kondra.com)
- * @version 2024-07-30
+ * Config bean for FlexApp app.
  */
 @Getter @Setter
 public class FlexAppConfig extends BaseAppConfig {

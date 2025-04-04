@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2024, Kondra, All rights reserved.
+ * (C) Copyright 2025, TCCC, All rights reserved.
  */
 package com.kondra.kos.training.flex;
 
@@ -8,9 +8,6 @@ import com.tccc.kos.ext.freestyle.pumpinfo.PumpInfo;
 
 /**
  * {@code PumpInfoResolver} for the micro board to match the towers.
- *
- * @author David Vogt (david@kondra.com)
- * @version 2024-07-30
  */
 public class MicroBoardPumpInfoResolver extends DefaultPumpInfoResolver {
     @Override

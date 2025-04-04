@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kondra.kos.training</groupId>
     <artifactId>training-flex</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.0-SNAPSHOT</version>
 
     <properties>
         <kos.version>1.6.2</kos.version>
@@ -37,9 +37,9 @@
             <dependency>
                 <groupId>com.kosdev.kos.app.ddk</groupId>
                 <artifactId>ddk.sdk</artifactId>
-                <version>${ddk.version}</version> 
+                <version>${ddk.version}</version>
             </dependency>
-            
+
             <!-- Lombok annotations -->
             <!-- https://www.projectlombok.org/ -->
             <dependency>
@@ -145,24 +145,25 @@
                             <goal>kabtool</goal>
                         </goals>
                         <configuration>
-                           <type>kos.system</type>
-                           <content>
-                              <copy>
-                                 <includes>
-                                     <include>descriptor.json</include>
-                                     <include>config.xml</include>
-                                 </includes>
-                              </copy>
-                              <copy>
-                                 <include>configs</include>
-                                 <dir>configs</dir>
-                              </copy>
-                              <copy>
-                                 <include>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</include>
-                                 <dir>lib</dir>
-                              </copy>
-                           </content>
-                        </configuration>                        
+                            <type>kos.system</type>
+                            <content>
+                                <copy>
+                                    <includes>
+                                        <include>descriptor.json</include>
+                                        <include>config.xml</include>
+                                    </includes>
+                                </copy>
+                                <copy>
+                                    <include>configs</include>
+                                    <dir>configs</dir>
+                                </copy>
+                                <copy>
+                                    <include>
+                                        ${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</include>
+                                    <dir>lib</dir>
+                                </copy>
+                            </content>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

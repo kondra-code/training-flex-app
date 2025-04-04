@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2024, Kondra, All rights reserved.
+ * (C) Copyright 2025, TCCC, All rights reserved.
  */
 package com.kondra.kos.training.flex;
 
@@ -13,8 +13,6 @@ import com.tccc.kos.core.app.KosCore;
 import com.tccc.kos.core.service.assembly.CoreAssembly;
 import com.tccc.kos.core.service.criticaldata.CriticalDataService;
 import com.tccc.kos.core.service.spawn.SpawnService;
-import com.tccc.kos.ddk.service.door.Door;
-import com.tccc.kos.ddk.service.door.DoorAware;
 import com.tccc.kos.ext.dispense.HolderBuilder;
 import com.tccc.kos.ext.dispense.pipeline.beverage.BeverageNozzlePipeline;
 import com.tccc.kos.ext.dispense.pipeline.ingredient.IngredientNozzlePipeline;
@@ -43,10 +41,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Assembly class for 4000 dispenser.
- *
- * @author David Vogt (david@kondra.com)
- * @version 2024-07-30
+ * Assembly class for Flex dispenser.
  */
 @Slf4j
 public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
