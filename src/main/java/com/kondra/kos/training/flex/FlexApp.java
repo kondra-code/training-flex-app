@@ -14,6 +14,8 @@ import com.tccc.kos.core.service.app.SystemApplication;
 import com.tccc.kos.core.service.device.DeviceService;
 import com.tccc.kos.core.service.device.serialnum.SerialNumberProvider;
 import com.tccc.kos.core.service.device.serialnum.criticaldata.CriticalDataSerialNumberProvider;
+import com.tccc.kos.ddk.DDK;
+import com.tccc.kos.ddk.service.auth.NcuiRole;
 import com.tccc.kos.ext.freestyle.FreestyleExtension;
 import com.tccc.kos.ext.freestyle.region.FreestyleRegionFactory;
 

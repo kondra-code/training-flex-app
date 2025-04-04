@@ -13,6 +13,8 @@ import com.tccc.kos.core.app.KosCore;
 import com.tccc.kos.core.service.assembly.CoreAssembly;
 import com.tccc.kos.core.service.criticaldata.CriticalDataService;
 import com.tccc.kos.core.service.spawn.SpawnService;
+import com.tccc.kos.ddk.service.door.Door;
+import com.tccc.kos.ddk.service.door.DoorAware;
 import com.tccc.kos.ext.dispense.HolderBuilder;
 import com.tccc.kos.ext.dispense.pipeline.beverage.BeverageNozzlePipeline;
 import com.tccc.kos.ext.dispense.pipeline.ingredient.IngredientNozzlePipeline;
