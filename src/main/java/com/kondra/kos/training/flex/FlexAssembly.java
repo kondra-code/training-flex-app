@@ -27,7 +27,6 @@ import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMacroBoard;
 import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMacroBoard.NsPumpType;
 import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMicroBoard;
 import com.tccc.kos.ext.freestyle.hardware.can.subnode.GPIOState;
-import com.tccc.kos.ext.freestyle.hardware.can.subnode.pump.MSVPump;
 import com.tccc.kos.ext.freestyle.hardware.rfid.RfidAntenna;
 import com.tccc.kos.ext.freestyle.hardware.rfid.RfidBoard;
 import com.tccc.kos.ext.freestyle.hardware.rfid.adapters.EX10RfidAdapter;
@@ -157,7 +156,6 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         // add additional critical data sources as they have eeproms
         criticalDataService.addSource(macroBoard.getWaterPump());
         criticalDataService.addSource(macroBoard.getCarbPump());
-        criticalDataService.addSource((MSVPump)macroBoard.getNsPump());
 
         // register gpioState with state service so it generates events
         gpioState = macroBoard.getGpioSubNode().getState();
