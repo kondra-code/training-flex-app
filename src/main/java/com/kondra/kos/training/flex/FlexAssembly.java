@@ -88,7 +88,7 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         superPumps.add(new SuperPumpDefinition(18, new int[] {15,16,17}));
 
         addBoard(microBoard = new FlexMicroBoard(this, "micro", superPumps, new MicroBoardPumpInfoResolver()));
-        addBoard(macroBoard = new FlexMacroBoard(this, "macro", NsPumpType.MSV));
+        addBoard(macroBoard = new FlexMacroBoard(this, "macro", NsPumpType.LFCV));
         addBoard(rfidBoard = new RfidBoard(this, "rfid"));
 
         // add cartridge agitator agitation tower and start in paused state
