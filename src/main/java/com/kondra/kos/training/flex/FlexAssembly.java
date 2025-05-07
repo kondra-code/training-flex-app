@@ -137,7 +137,6 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         // add aux macros
         holderBuilder.buildMacro(macroBoard.getMacro1()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro2()).setIngType(Ingredient.TYPE_BIB);
-        holderBuilder.buildMacro(macroBoard.getMacro3()).setIngType(Ingredient.TYPE_BIB);
         holderBuilder.buildMacro(macroBoard.getMacro4()).setIngType(Ingredient.TYPE_BIB);
 
         // load intents used by the pump pipeline
