@@ -211,6 +211,6 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         // insert plain and carbonated water as intrinsic ingredients
         insertionService.insertIntrinsic(Ingredient.WATER, macroBoard.getWaterPump().getHolder());
         insertionService.insertIntrinsic(Ingredient.CARB, macroBoard.getCarbPump().getHolder());
-        insertionService.insertLocked(Ingredient.FIS, macroBoard.getNsPump().getHolder());
+        insertionService.insertLocked(Ingredient.HFCS, macroBoard.getNsPump().getHolder());
     }
 }
