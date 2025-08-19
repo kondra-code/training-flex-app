@@ -24,6 +24,16 @@
          <op type="vpour" rate="0.9" volume="10" diluted="false" />
       </intent>
 
+      <!-- Remote NNS Micros, will default to regular micros -->
+      <intent name="remote-micro:PRIME" delegated="true">
+         <op type="tpour" rate="0.9" duration="7000" diluted="true" errorHandlerId="blockAirDetect" />
+         <op type="tpour" rate="0.9" duration="5000" diluted="true" />
+      </intent>
+      <intent name="remote-micro:PURGE" delegated="true">
+         <op type="tpour" rate="0.9" duration="7000" diluted="true" errorHandlerId="blockAirDetect" />
+         <op type="tpour" rate="0.9" duration="5000" diluted="true" />
+      </intent>
+
       <!-- msv -->
       <intent name="msv:PURGE">
          <op type="vpour" rate="11.25" volume="200" diluted="true" />
@@ -105,11 +115,19 @@
          <intent type="FLUSH" ref="micro:FLUSH" />
          <intent type="HOLD_TO_POUR" ref="micro:HOLD_TO_POUR" />
       </rule>
+      <rule type="pumpType" key="remoteMicro">
+         <intent type="PRIME" ref="remote-micro:PRIME" />
+         <intent type="PURGE" ref="remote-micro:PURGE" />
+      </rule>
       <rule type="pumpType" key="microSuper">
          <intent type="PRIME" ref="micro:PRIME" />
          <intent type="PURGE" ref="micro:PURGE" />
          <intent type="FLUSH" ref="micro:FLUSH" />
          <intent type="HOLD_TO_POUR" ref="micro:HOLD_TO_POUR" />
+      </rule>
+      <rule type="pumpType" key="remoteMicroSuper">
+         <intent type="PRIME" ref="remote-micro:PRIME" />
+         <intent type="PURGE" ref="remote-micro:PURGE" />
       </rule>
       <rule type="pumpType" key="fcm">
          <intent type="dilution" ref="dilution" />
