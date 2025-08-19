@@ -27,6 +27,7 @@ import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMacroBoard;
 import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMacroBoard.NsPumpType;
 import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMicroBoard;
 import com.tccc.kos.ext.freestyle.hardware.can.subnode.GPIOState;
+import com.tccc.kos.ext.freestyle.hardware.remote.RemoteNnsTray;
 import com.tccc.kos.ext.freestyle.hardware.rfid.RfidAntenna;
 import com.tccc.kos.ext.freestyle.hardware.rfid.RfidBoard;
 import com.tccc.kos.ext.freestyle.hardware.rfid.adapters.EX10RfidAdapter;
@@ -48,6 +49,9 @@ import lombok.extern.slf4j.Slf4j;
 public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssembly, DoorAware {
     // reason codes
     private static final String REASON_door = "door";
+
+    // name of NNS holder (S8)
+    private static final String NNS_HOLDER_NAME = "S8";
 
     @Autowired
     private FlexApp app;                              // system app
@@ -86,12 +90,12 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         List<SuperPumpDefinition> superPumps = new ArrayList<>();
         superPumps.add(new SuperPumpDefinition(18, new int[] {15,16,17}));
 
-        addBoard(microBoard = new FlexMicroBoard(this, "micro", superPumps, new MicroBoardPumpInfoResolver()));
-        addBoard(macroBoard = new FlexMacroBoard(this, "macro", NsPumpType.LFCV));
-        addBoard(rfidBoard = new RfidBoard(this, "rfid"));
+        microBoard = new FlexMicroBoard(this, "micro", superPumps, new MicroBoardPumpInfoResolver());
+        macroBoard = new FlexMacroBoard(this, "macro", NsPumpType.LFCV);
+        rfidBoard = new RfidBoard(this, "rfid");
 
         // add cartridge agitator agitation tower and start in paused state
-        agitator = new CartridgeAgitator("agit", macroBoard.getCartridgeAgitatorSubNode(), false);
+        agitator = new CartridgeAgitator("agit", macroBoard, false);
         addAgitator(agitator);
         agitator.pause(REASON_door, false);
 
@@ -126,6 +130,9 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         microBuilder.setNameIterator("A", 1, 1);
         microBuilder.setScannerIterator(agitScanner, 0, 1);
         microBuilder.buildMicros(8, 1);
+
+        // add support for remote nns tray connected to S8 pumps
+        addRemoteTray(new RemoteNnsTray("nns", getHolder(NNS_HOLDER_NAME)));
 
         // add waters and sweetener
         HolderBuilder holderBuilder = new HolderBuilder(this, nozzle);
