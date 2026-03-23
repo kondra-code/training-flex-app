@@ -5,15 +5,15 @@ package com.kondra.kos.training.flex;
 
 import java.util.Arrays;
 
-import com.tccc.kos.commons.core.context.annotations.Autowired;
-import com.tccc.kos.commons.core.service.config.BeanChanges;
-import com.tccc.kos.commons.util.resource.ClassLoaderResourceLoader;
-import com.tccc.kos.core.service.app.AppService;
-import com.tccc.kos.core.service.app.Application;
-import com.tccc.kos.core.service.app.SystemApplication;
-import com.tccc.kos.core.service.device.DeviceService;
-import com.tccc.kos.core.service.device.serialnum.SerialNumberProvider;
-import com.tccc.kos.core.service.device.serialnum.criticaldata.CriticalDataSerialNumberProvider;
+import com.kosdev.kos.commons.core.context.annotations.Autowired;
+import com.kosdev.kos.commons.core.service.config.BeanChanges;
+import com.kosdev.kos.commons.util.resource.ClassLoaderResourceLoader;
+import com.kosdev.kos.core.service.app.AppService;
+import com.kosdev.kos.core.service.app.Application;
+import com.kosdev.kos.core.service.app.SystemApplication;
+import com.kosdev.kos.core.service.device.DeviceService;
+import com.kosdev.kos.core.service.device.serialnum.SerialNumberProvider;
+import com.kosdev.kos.core.service.device.serialnum.criticaldata.CriticalDataSerialNumberProvider;
 import com.tccc.kos.ddk.DDK;
 import com.tccc.kos.ddk.service.auth.NcuiRole;
 import com.tccc.kos.ext.freestyle.FreestyleExtension;
@@ -58,7 +58,7 @@ public class FlexApp extends SystemApplication<FlexAppConfig> {
     public void start() throws Exception {
 
         // create and install the assembly for the device
-        installAssembly(assembly = new FlexAssembly(getDescriptor()));
+        installAssembly(assembly = new FlexAssembly());
     }
 
     @Override

@@ -6,21 +6,20 @@ package com.kondra.kos.training.flex;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tccc.kos.commons.core.context.annotations.Autowired;
-import com.tccc.kos.commons.util.json.JsonDescriptor;
-import com.tccc.kos.commons.util.resource.ClassLoaderResourceLoader;
-import com.tccc.kos.core.app.KosCore;
-import com.tccc.kos.core.service.assembly.CoreAssembly;
-import com.tccc.kos.core.service.criticaldata.CriticalDataService;
-import com.tccc.kos.core.service.spawn.SpawnService;
+import com.kosdev.kos.commons.core.context.annotations.Autowired;
+import com.kosdev.kos.commons.util.resource.ClassLoaderResourceLoader;
+import com.kosdev.kos.core.app.KosCore;
+import com.kosdev.kos.core.service.assembly.CoreAssembly;
+import com.kosdev.kos.core.service.criticaldata.CriticalDataService;
+import com.kosdev.kos.core.service.spawn.SpawnService;
+import com.kosdev.kos.ext.dispense.HolderBuilder;
+import com.kosdev.kos.ext.dispense.pipeline.beverage.BeverageNozzlePipeline;
+import com.kosdev.kos.ext.dispense.pipeline.ingredient.IngredientNozzlePipeline;
+import com.kosdev.kos.ext.dispense.pipeline.ingredient.XmlPumpIntentFactory;
+import com.kosdev.kos.ext.dispense.service.insertion.InsertionService;
+import com.kosdev.kos.ext.dispense.service.nozzle.Nozzle;
 import com.tccc.kos.ddk.service.door.Door;
 import com.tccc.kos.ddk.service.door.DoorAware;
-import com.tccc.kos.ext.dispense.HolderBuilder;
-import com.tccc.kos.ext.dispense.pipeline.beverage.BeverageNozzlePipeline;
-import com.tccc.kos.ext.dispense.pipeline.ingredient.IngredientNozzlePipeline;
-import com.tccc.kos.ext.dispense.pipeline.ingredient.XmlPumpIntentFactory;
-import com.tccc.kos.ext.dispense.service.insertion.InsertionService;
-import com.tccc.kos.ext.dispense.service.nozzle.Nozzle;
 import com.tccc.kos.ext.freestyle.StandardFreestyleAssembly;
 import com.tccc.kos.ext.freestyle.SuperPumpDefinition;
 import com.tccc.kos.ext.freestyle.hardware.can.board.FlexMacroBoard;
@@ -77,14 +76,14 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
     private EX10RfidAdapter rfidAdapter;                // rfid adapter for EX10 hardware
     private GPIOState gpioState;                        // gpio state bean
 
-    public FlexAssembly(JsonDescriptor descriptor) throws Exception {
-        super("core", descriptor);
+    public FlexAssembly() throws Exception {
+        super("core");
     }
 
     @Override
     public void load() throws Exception {
         // create a nozzle and add it to this assembly
-        addNozzle(nozzle = new Nozzle(this, "nozzle"));
+        nozzle = new Nozzle(this, "nozzle");
 
 
         List<SuperPumpDefinition> superPumps = new ArrayList<>();
@@ -95,8 +94,7 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         rfidBoard = new RfidBoard(this, "rfid");
 
         // add cartridge agitator agitation tower and start in paused state
-        agitator = new CartridgeAgitator("agit", macroBoard, false);
-        addAgitator(agitator);
+        agitator = new CartridgeAgitator(this, "agit", macroBoard, false);
         agitator.pause(REASON_door, false);
 
         // EX10 rfid adapter
@@ -132,7 +130,7 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         microBuilder.buildMicros(8, 1);
 
         // add support for remote nns tray connected to S8 pumps
-        addRemoteTray(new RemoteNnsTray("nns", getHolder(NNS_HOLDER_NAME)));
+        new RemoteNnsTray(this, "nns", getHolder(NNS_HOLDER_NAME));
 
         // add waters and sweetener
         HolderBuilder holderBuilder = new HolderBuilder(this, nozzle);
@@ -172,7 +170,7 @@ public class FlexAssembly extends StandardFreestyleAssembly implements CoreAssem
         gpioState.addListener(s -> {
             Boolean doorState = gpioState.getInput0();
             if (doorState != null) {
-                app.getDdk().getDoorService().setOpen(doorState);
+                app.getDdk().getDoorService().setOpen(doorState.booleanValue());
             }
         });
 
