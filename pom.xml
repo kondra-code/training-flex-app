@@ -106,7 +106,7 @@
 
                 <!-- kOS Maven Plugin -->
                 <plugin>
-                    <groupId>com.kosdev.kos.maven</groupId>
+                    <groupId>com.kosdev.kos2.maven</groupId>
                     <artifactId>kos-kab-maven-plugin</artifactId>
                     <version>${kos-kab-maven-plugin.version}</version>
                 </plugin>
@@ -136,7 +136,7 @@
             </plugin>
 
             <plugin>
-                <groupId>com.kosdev.kos.maven</groupId>
+                <groupId>com.kosdev.kos2.maven</groupId>
                 <artifactId>kos-kab-maven-plugin</artifactId>
                 <executions>
                     <execution>
@@ -145,6 +145,7 @@
                             <goal>kabtool</goal>
                         </goals>
                         <configuration>
+                            <name>kos-cts-flex-app</name>
                             <type>kos.system</type>
                             <content>
                                 <copy>
