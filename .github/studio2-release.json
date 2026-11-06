@@ -2,6 +2,7 @@
   "default_keyset": "test.demo-tutorials",
   "prebuild_cmd": ".github/release_version_prebuild.sh",
   "build_cmd": "./quickbuild.sh",
+  "studio2": true,
 
   "artifacts": [
     {

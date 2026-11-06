@@ -1,6 +1,7 @@
 {
   "default_keyset": "test.demo-tutorials",
   "build_cmd": "./quickbuild.sh",
+  "studio2": true,
 
   "artifacts": [
     {
