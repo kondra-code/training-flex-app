@@ -4,18 +4,23 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.kosdev.kos2.sdk.bom</groupId>
+        <artifactId>kos-bom</artifactId>
+        <version>0.0.0-SNAPSHOT</version>
+        <relativePath/> <!-- don't search local filesystem, resolve from repo -->
+    </parent>
+
     <groupId>com.kondra.kos.training</groupId>
     <artifactId>training-flex-app</artifactId>
     <version>0.0.0-SNAPSHOT</version>
 
     <properties>
-        <kos.version>1.10.x-SNAPSHOT</kos.version>
+        <kos.version>0.0.0-SNAPSHOT</kos.version>
         <ddk.version>0.0.0-SNAPSHOT</ddk.version>
-        <kos-kab-maven-plugin.version>1.3.4</kos-kab-maven-plugin.version>
         <lombok.version>1.18.42</lombok.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-
         <java.version>17</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -24,15 +29,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- kOS SDK -->
-            <dependency>
-                <groupId>com.kosdev.kos.sdk.bom</groupId>
-                <artifactId>kos-bom</artifactId>
-                <version>${kos.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- ddk -->
             <dependency>
                 <groupId>com.kosdev.kos.app.ddk</groupId>
@@ -53,16 +49,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kosdev.kos.sdk.api</groupId>
+            <groupId>com.kosdev.kos2.sdk.api</groupId>
             <artifactId>api-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kosdev.kos.sdk.api</groupId>
+            <groupId>com.kosdev.kos2.sdk.api</groupId>
             <artifactId>api-dispense</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kosdev.kos.sdk.api</groupId>
+            <groupId>com.kosdev.kos2.sdk.api</groupId>
             <artifactId>api-freestyle</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kosdev.kos2.sdk.api</groupId>
+            <artifactId>api-info</artifactId>
         </dependency>
         <dependency>
             <groupId>com.kosdev.kos.app.ddk</groupId>
