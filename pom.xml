@@ -34,6 +34,7 @@
                 <groupId>com.kosdev.kos.app.ddk</groupId>
                 <artifactId>ddk.sdk</artifactId>
                 <version>${ddk.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Lombok annotations -->

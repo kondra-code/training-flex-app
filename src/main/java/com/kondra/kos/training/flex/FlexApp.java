@@ -79,6 +79,9 @@ public class FlexApp extends SystemApplication<FlexAppConfig> {
         // use ddk as the pour delegate
         assembly.getBeveragePipeline().setDelegate(ddk);
 
+        // Set door state
+        ddk.getDoorService().setOpen(true);
+
         // add the nozzle
         ddk.setNozzle(assembly.getNozzle());
 
