@@ -26,10 +26,11 @@ jobs:
         run: |
             echo KOSBUILD_VERSION=${GITHUB_REF#refs/tags/} >> $GITHUB_ENV
 
-      - name: Build and Publish
+      - name: Studio 2 Build and Publish
         env:
-            KOSBUILD_SECRET_URL: ${{ secrets.KOSBUILD_SECRET_URL }}
-            KOSBUILD_SECRET_PASSWORD: ${{ secrets.KOSBUILD_SECRET_PASSWORD }}
+          KOSBUILD_SECRET_URL: ${{ secrets.STUDIO2_KOSBUILD_SECRET_URL }}
+          KOSBUILD_SECRET_PASSWORD: ${{ secrets.STUDIO2_KOSBUILD_SECRET_PASSWORD }}
+
         working-directory: ./${{ github.event.repository.name }}
         run: |
-            kos_build_handler.sh automation .github/kosbuild-release.json
+          kos_build_handler.sh automation .github/studio2-release.json

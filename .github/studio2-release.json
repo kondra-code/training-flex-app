@@ -1,12 +1,12 @@
 {
-  "default_keyset": "prod.kos",
+  "default_keyset": "test.demo-tutorials",
   "prebuild_cmd": ".github/release_version_prebuild.sh",
   "build_cmd": "./quickbuild.sh",
 
   "artifacts": [
     {
-      "id": "training-zero4-app",
-      "filename": "target/training-flex-${KOS_STD_VERSION_REGEX}-SNAPSHOT.kab",
+      "id": "kos-cts-flex-app",
+      "filename": "target/kos-cts-flex-app-${KOS_STD_VERSION_REGEX}.kab",
       "artifactstore": "kos-cdn",
       "marketplace": 1
     }

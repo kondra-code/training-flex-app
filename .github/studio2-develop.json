@@ -1,0 +1,13 @@
+{
+  "default_keyset": "test.demo-tutorials",
+  "build_cmd": "./quickbuild.sh",
+
+  "artifacts": [
+    {
+      "id": "kos-cts-flex-app",
+      "filename": "target/kos-cts-flex-app-${KOS_STD_VERSION_REGEX}.kab",
+      "artifactstore": "marketArtifact",
+      "marketplace": 1
+    }
+  ]
+}
