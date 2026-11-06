@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kondra.kos.training</groupId>
-    <artifactId>training-flex</artifactId>
+    <artifactId>training-flex-app</artifactId>
     <version>0.0.0-SNAPSHOT</version>
 
     <properties>
